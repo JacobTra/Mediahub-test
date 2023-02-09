@@ -1,0 +1,277 @@
+b {
+  color: #303030;
+  margin-right: 6px;
+}
+
+.global {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.searchBar {
+  margin: 5px;
+  padding: 5px;
+  width: 40%;
+  flex-direction: column;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 1rem;
+}
+
+.tab-bloc {
+  background: #eee;
+  list-style-type: none;
+  margin-bottom: 0;
+  height: 55px;
+  border-bottom: 1 px solid #aaaaaa;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.tab-bloc .tab-link {
+  width: 33.33%;
+  padding: 10px;
+  float: left;
+  text-align: center;
+  font-family: "Dosis";
+  font-weight: 400;
+  cursor: pointer;
+}
+.tab-link:hover {
+  background: #cacaca;
+}
+
+.tab-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.active {
+  background: #cacaca;
+  border-bottom: 2px solid #ecc6bf;
+  transition: ease-in-out 0.3s;
+}
+
+.searchNameInput {
+  width: 30%;
+}
+.searchIdInput {
+  width: 60%;
+}
+
+.moviesList {
+  width: auto;
+  float: left;
+  min-height: 520px;
+  width: 40%;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #ecc6bf;
+  border-radius: 1rem;
+}
+.movieInfos {
+  margin-left: 45%;
+  min-height: 500px;
+  padding: 10px;
+  overflow: auto;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #ecc6bf;
+  border-radius: 1rem;
+}
+
+.displayInfos {
+  height: 100%;
+}
+
+.bloc {
+  margin: 5px;
+  padding: 5px;
+  min-height: 400px;
+  width: 90%;
+}
+
+ul {
+  height: 500px;
+  padding: 5px;
+  margin: 0;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.sort-value {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #c59f99;
+}
+.w-100 {
+  width: 100%;
+}
+.line {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+.line .line-info {
+  width: 50%;
+
+  .movie-title {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color: #787878;
+    font-weight: 700;
+  }
+  .movie-info {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}
+.line .line-sort {
+  text-align: center;
+}
+.line .line-btn {
+  width: 27%;
+  display: flex;
+  justify-content: center;
+}
+.detail-btn {
+  width: 50%;
+}
+
+.movie-info-line-1 {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem;
+
+  .title {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 30px;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+    color: #787878;
+    font-weight: 700;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-align: right;
+    width: 70%;
+  }
+  .movie-id {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 12px;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+    color: #787878;
+    font-weight: 700;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-align: right;
+    width: 30%;
+  }
+}
+.movie-info-line-2 {
+  display: flex;
+  flex-direction: row;
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+
+  .ratings {
+    margin: 1rem;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+    color: #1371ff;
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    .ratings-value {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: black;
+    }
+  }
+}
+.movie-info-line-3 {
+  display: flex;
+  flex-direction: row;
+  line-height: 1.4rem;
+  font-size: 1.1rem;
+
+  b {
+    padding-right: 8px;
+  }
+
+  .movie-info-line-3-col {
+    margin: 1rem;
+    text-align: left;
+    width: 100%;
+
+    .general {
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      width: 100%;
+
+      .general-data {
+        color: #ecc6bf;
+      }
+    }
+  }
+}
+.movie-info-line-4 {
+  margin: 1rem;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 400;
+
+  .budget {
+    margin: 1rem;
+    text-align: center;
+    color: #029722;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+}
+.movie-info-line-5 {
+  display: flex;
+  flex-direction: row;
+  font-size: 1.2rem;
+
+  .sales {
+    margin: 1.2rem;
+    width: 100%;
+    text-align: center;
+
+    .sales-type {
+      color: #029722;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .sales-value {
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+  }
+}
+
+.logout {
+  margin-top: 1%;
+  margin-right: 1%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}

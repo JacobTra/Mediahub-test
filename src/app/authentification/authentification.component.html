@@ -1,0 +1,38 @@
+<div class="global">
+  <div class="login-card">
+    <div class="login">Connection</div>
+    <form [formGroup]="form" (ngSubmit)="login()">
+      <div class="center">
+        <input
+          type="text"
+          id="username"
+          formControlName="username"
+          class="login-input"
+          placeholder="Nom Utilisateur"
+        />
+        <div *ngIf="username!.invalid && username!.dirty" class="alert">
+          <div *ngIf="username!.errors?.['required']">
+            Nom d'utilisateur est obligatoire.
+          </div>
+        </div>
+      </div>
+      <div class="center">
+        <input
+          type="text"
+          id="password"
+          formControlName="password"
+          class="login-input"
+          placeholder="Mot de Passe"
+        />
+        <div *ngIf="password!.invalid && password!.dirty" class="alert">
+          <div *ngIf="password!.errors?.['required']">
+            Mot de Passe est obligatoire.
+          </div>
+        </div>
+      </div>
+      <div class="center">
+        <button [disabled]="form!.invalid">Connection</button>
+      </div>
+    </form>
+  </div>
+</div>

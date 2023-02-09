@@ -1,0 +1,180 @@
+<div class="global">
+  <button class="btn logout" (click)="logOut()">Déconnection</button>
+
+  <div class="searchBar">
+    <div class="tab-bloc">
+      <div (click)="tabClick()" class="tab-link" [class.active]="searchNametab">
+        Recherche par nom
+      </div>
+      <div
+        (click)="tabClick()"
+        class="tab-link"
+        [class.active]="!searchNametab"
+      >
+        Recherche par ID
+      </div>
+    </div>
+    <div *ngIf="searchNametab" class="tab-detail">
+      <form [formGroup]="form" (ngSubmit)="searchName()">
+        <div>
+          <input
+            type="text"
+            id="movieNameID"
+            class="searchNameInput"
+            formControlName="movieName"
+            placeholder="Titre du film..."
+          />
+          <label for="sortID">Tri</label>
+
+          <select id="sortID" formControlName="movieSort">
+            <option [value]=""></option>
+            <option>id</option>
+            <option>Title</option>
+            <option>US Gross</option>
+            <option>Worldwide Gross</option>
+            <option>US DVD Sales</option>
+            <option>Production Budget</option>
+            <option>Release Date</option>
+            <option>MPAA Rating</option>
+            <option>Running Time min</option>
+            <option>Distributor</option>
+            <option>Source</option>
+            <option>Major Genre</option>
+            <option>Creative Type</option>
+            <option>Director</option>
+            <option>Rotten Tomatoes Rating</option>
+            <option>IMDB Rating</option>
+            <option>IMDB Votes</option>
+          </select>
+        </div>
+        <div class="center">
+          <button type="submit" class="btn">Recherche</button>
+        </div>
+      </form>
+    </div>
+    <div *ngIf="!searchNametab" class="tab-detail">
+      <form [formGroup]="formId" (ngSubmit)="searchId()">
+        <div class="center">
+          <input
+            type="number"
+            id="movieID"
+            class="searchIdInput"
+            formControlName="movieId"
+            placeholder="ID du film..."
+          />
+        </div>
+        <div class="center"><button class="btn">Recherche</button></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="bloc">
+    <div class="moviesList">
+      <ul *ngIf="listOfMovies$.value.length > 0">
+        <li *ngFor="let movie of listOfMovies$ | async" class="line">
+          <div class="line-info">
+            <div class="movie-title">{{ movie.title }}</div>
+            <div class="movie-info">
+              <b>Diffuseur:</b> {{ movie.distributor }}
+            </div>
+            <div class="movie-info"><b>Genre:</b> {{ movie.majorGenre }}</div>
+            <div class="movie-info">
+              <b>Note Rotten Tomatoes:</b> {{ movie.rottenTomatoesRating }}
+            </div>
+            <div class="movie-info">
+              <b>Note IMDB:</b> {{ movie.imdbRating }}
+            </div>
+            <div class="movie-info"><b>ID:</b> {{ movie.id }}</div>
+          </div>
+          <div class="w-100">
+            <div *ngIf="movie.sort !== ''" class="line-sort">
+              <b>Tri:</b><br />
+              '{{ movie.sort }}'
+              <div class="sort-value">{{ movie.sortValue }}</div>
+            </div>
+          </div>
+          <div class="line-btn w-100">
+            <button class="btn" (click)="setMovieInfos(movie)">Details</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="movieInfos">
+      <div *ngIf="displayInfos" class="displayInfos">
+        <div class="movie-info-line-1">
+          <div class="title">{{ infosMovie.title }}</div>
+          <div class="movie-id">
+            ID
+            <div class="sort-value">{{ infosMovie.id }}</div>
+          </div>
+        </div>
+
+        <div class="movie-info-line-2">
+          <div class="ratings">
+            Note Rotten Tomatoes
+            <div class="ratings-value">
+              {{ infosMovie.rottenTomatoesRating }}
+            </div>
+          </div>
+          <div class="ratings">
+            Note IMDB
+            <div class="ratings-value">{{ infosMovie.imdbRating }}</div>
+          </div>
+          <div class="ratings">
+            Votes IMDB
+            <div class="ratings-value">{{ infosMovie.imdbVotes | number }}</div>
+          </div>
+        </div>
+
+        <div class="movie-info-line-3">
+          <div class="movie-info-line-3-col">
+            <div class="">
+              <b>Date de sortie:</b>{{ infosMovie.releaseDate }}
+            </div>
+            <div class=""><b>Note MPAA:</b>{{ infosMovie.mpaaRating }}</div>
+            <div class=""><b>Durée min:</b>{{ infosMovie.runningTimeMin }}</div>
+            <div class=""><b>Diffuseur:</b>{{ infosMovie.distributor }}</div>
+          </div>
+          <div class="movie-info-line-3-col">
+            <div class=""><b>Source:</b>{{ infosMovie.source }}</div>
+            <div class=""><b>Genre:</b>{{ infosMovie.majorGenre }}</div>
+            <div class="">
+              <b>Type Créatif:</b>{{ infosMovie.creativeType }}
+            </div>
+            <div class=""><b>Directeur:</b>{{ infosMovie.director }}</div>
+          </div>
+        </div>
+
+        <div class="movie-info-line-4">
+          <div>
+            <div class="budget">Budget de Production</div>
+            {{ infosMovie.productionBudget | number }}
+          </div>
+        </div>
+
+        <div class="movie-info-line-5">
+          <div class="sales">
+            <div class="sales-type">US Brut</div>
+            <div class="sales-value">
+              {{ infosMovie.usGross | number }}
+            </div>
+          </div>
+
+          <div class="sales">
+            <div class="sales-type">Monde Brut</div>
+            <div class="sales-value">
+              {{ infosMovie.worldWideGross | number }}
+            </div>
+          </div>
+          <div class="sales">
+            <div class="sales-type">Vente DVD US</div>
+            <div class="sales-value">
+              {{ infosMovie.usDvdSales | number }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
